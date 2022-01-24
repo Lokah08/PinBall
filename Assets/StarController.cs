@@ -6,7 +6,7 @@ public class StarController : MonoBehaviour
 {
     // 回転速度
     //練習課題　rotSpeedの値を変えて動き方を確認する
-    private float rotSpeed = 0.2f;
+    private float rotSpeed = 0.5f;
 
 
     // Start is called before the first frame update
