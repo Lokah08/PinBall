@@ -18,8 +18,6 @@ public class BallController : MonoBehaviour
     private int score = 0;
 
  
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +26,10 @@ public class BallController : MonoBehaviour
 
 
         //課題：シーン中のScoreTextオブジェクトを取得
-        this.scoreText = GameObject.Find("ScoreTex");
+        this.scoreText = GameObject.Find("ScoreText");
 
         //test
         Debug.Log("Score:" + score);
-
-
-
-
-
     }
 
     // Update is called once per frame
@@ -52,27 +45,24 @@ public class BallController : MonoBehaviour
             //GameOvreTextの表示が変わることを確認してみましょう。
             //this.gameoverText.GetComponent<Text>().text = "アウトです";
         }
-
-
     }
 
 
     //課題：衝突時に呼ばれる関数
     void OnCollisionEnter(Collision other)
     {
-        if (tag == "SmallStarTag")
+        if (other.gameObject.tag == "SmallStarTag")
         {
             score += 3;
         }
-        else if (tag == "SmallCloudTag")
+        else if (other.gameObject.tag == "SmallCloudTag")
         {
             score += 5;
         }
-        else if (tag == "LargeStarTag" || tag == "LargeCloudTag")
+        else if (other.gameObject.tag == "LargeStarTag" || other.gameObject.tag == "LargeCloudTag")
         {
             score += 10;
         }
-
         this.scoreText.GetComponent<Text>().text = "Score:" + score;
     }
 }
