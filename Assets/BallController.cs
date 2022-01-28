@@ -11,11 +11,32 @@ public class BallController : MonoBehaviour
     //ゲームオーバを表示するテキスト
     private GameObject gameoverText;
 
+    //課題：スコアを表示するテキスト
+    private GameObject scoreText;
+
+    //課題：得点の値の変数を初期化
+    private int score = 0;
+
+ 
+
+
     // Start is called before the first frame update
     void Start()
     {
         //シーン中のGameOverTextオブジェクトを取得
         this.gameoverText = GameObject.Find("GameOverText");
+
+
+        //課題：シーン中のScoreTextオブジェクトを取得
+        this.scoreText = GameObject.Find("ScoreTex");
+
+        //test
+        Debug.Log("Score:" + score);
+
+
+
+
+
     }
 
     // Update is called once per frame
@@ -29,9 +50,29 @@ public class BallController : MonoBehaviour
 
             //練習：this.gameoverText.GetComponent<Text> ().text = "Game Over";の右辺の文字列を変更すると
             //GameOvreTextの表示が変わることを確認してみましょう。
-            this.gameoverText.GetComponent<Text>().text = "アウトです";
-
-
+            //this.gameoverText.GetComponent<Text>().text = "アウトです";
         }
+
+
+    }
+
+
+    //課題：衝突時に呼ばれる関数
+    void OnCollisionEnter(Collision other)
+    {
+        if (tag == "SmallStarTag")
+        {
+            score += 3;
+        }
+        else if (tag == "SmallCloudTag")
+        {
+            score += 5;
+        }
+        else if (tag == "LargeStarTag" || tag == "LargeCloudTag")
+        {
+            score += 10;
+        }
+
+        this.scoreText.GetComponent<Text>().text = "Score:" + score;
     }
 }
