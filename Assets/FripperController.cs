@@ -26,28 +26,24 @@ public class FripperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //左矢印キーを押した時左フリッパーを動かす
-        //課題：Aキーを押した時左フリッパーを動かす
-        //（参照用）if (Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag")
-       if (Input.GetKeyDown(KeyCode.A) && tag == "LeftFripperTag")
+        //課題：左矢印キーまたはAキーを押した時左フリッパーを動かす
+        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && tag == "LeftFripperTag")
         {
             SetAngle(this.flickAngle);
         }
-        //右矢印キーを押した時右フリッパーを動かす
-        //課題：Dキーを押した時右フリッパーを動かす
-        if (Input.GetKeyDown(KeyCode.D) && tag == "RightFripperTag")
+        //課題：右矢印キーまたはDキーを押した時右フリッパーを動かす
+        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && tag == "RightFripperTag")
         {
             SetAngle(this.flickAngle);
         }
 
-        //矢印キー離された時フリッパーを元に戻す
-        //課題：Aキーを離した時フリッパーを元に戻す
-        if (Input.GetKeyUp(KeyCode.A) && tag == "LeftFripperTag")
+        //課題：左矢印キーまたはAキー離された時フリッパーを元に戻す
+        if ((Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A)) && tag == "LeftFripperTag")
         {
             SetAngle(this.defaultAngle);
         }
-        //課題：Dキーを離した時フリッパーを元に戻す
-        if (Input.GetKeyUp(KeyCode.D) && tag == "RightFripperTag")
+        //課題：右矢印キーまたはDキー離された時フリッパーを元に戻す
+        if ((Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D)) && tag == "RightFripperTag")
         {
             SetAngle(this.defaultAngle);
         }
